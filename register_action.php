@@ -1,5 +1,4 @@
 <?php
-
     # Get the date
     date_default_timezone_set('Asia/Hong_Kong');
 
@@ -18,7 +17,7 @@
     $specialChars = preg_match('@[^\w]@', $password);
 
     if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-        echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+        echo "<script type='text/javascript'>alert('Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.');</script>";
     }else{
         # SQL query  
         $conn = new mysqli('ims.cm10enqi961k.us-east-2.rds.amazonaws.com','pongodev','pongodevPongodev','imsdatabase');
@@ -28,11 +27,9 @@
             $stmt = $conn->prepare("INSERT INTO admin (admin_username, admin_email, admin_password, time_created, date_created)VALUES(?, ?, ?, ?, ?)");
             $stmt->bind_param("sssss", $name, $email, $password, $time_created, $date_created);
             $stmt->execute();
-            echo "Register successfully";
+            echo "<script type='text/javascript'>alert('Register successfully');</script>";
             $stmt->close();
             $conn->close();
         }
     }
-
-    
 ?>

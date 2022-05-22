@@ -1,6 +1,5 @@
 <?php
 
-
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -14,20 +13,18 @@ $result = mysqli_query($con,"SELECT * FROM admin WHERE admin_username = '".$user
 $rows = mysqli_num_rows($result); 
 
 if ($rows == 1) {
-    
-    echo "<script type='text/javascript'>alert('Valid credentials');</script>";
+    header("Location: content.php");
+    die();
 }
-
 else{
- echo "<script type='text/javascript'>alert('Invalid credentials');</script>";
-
+    echo "<script type='text/javascript'>alert('Invalid credentials');</script>";
 }
 
 mysqli_close($con);
 /*
 header("Location: index.php");
     echo "<script type='text/javascript'> 
-    document.getElementById('main').style.display = 'block';
+    parent.document.getElementById('main').style.display = 'block';
     </script>"; */
 
 ?>

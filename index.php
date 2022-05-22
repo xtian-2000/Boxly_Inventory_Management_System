@@ -6,12 +6,21 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Boxly | Inventory Management System</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <?php include_once 'login.php';?>
     </head>
     <body>
         <header> </header>
-        <div id="main" class="login" style="">
-            <h2>Main</h2><br>
+        <div id="login" class="login">
+            <h2>Login</h2><br>
+            <form action="login_action.php" method="POST">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br>
+
+                <input type="submit" value="Submit">
+            </form>
+            <a href="register.php">Register here</a>
         </div>
     </body>
 </html>
