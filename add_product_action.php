@@ -1,4 +1,7 @@
 <?php
+    //Session started
+    session_start();
+    
     # Get the date
     date_default_timezone_set('Asia/Hong_Kong');
 
