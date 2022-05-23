@@ -1,3 +1,8 @@
+<?php
+    //Session started
+    session_start();
+?>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,7 +14,10 @@
     <body>
         <header> </header>
         <div id="login" class="login">
-            <h2>Main Window</h2><br>
+            <?php
+                echo "Welcome ". $_SESSION['username'];
+            ?>
+            <br>
             <a href="add_product.php">Add products</a>
         </div>
     </body>
