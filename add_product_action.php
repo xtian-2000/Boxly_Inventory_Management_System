@@ -23,8 +23,8 @@
         die('Connection Failed : '.$conn->connect_error);
     }else{
         //Insert product information to database
-        $stmt = $conn->prepare("INSERT INTO product (product_category, product_name, product_quantity, product_price, total_value, time_created, date_created, admin_id)VALUES(?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $product_category, $product_name, $product_quantity, $product_price, $total_value, $time_created, $date_created, $_SESSION['admin_id']);
+        $stmt = $conn->prepare("INSERT INTO product (product_category, product_name, product_quantity, product_price, total_value, time_created, date_created, admin_id)VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $product_category, $product_name, $product_quantity, $product_price, $total_value, $time_created, $date_created, $_SESSION['admin_id']);
         $stmt->execute();
 
         //Insert transaction information to database
