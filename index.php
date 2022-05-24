@@ -19,14 +19,14 @@
     <body>
         <div class="container">
             <div class="form">
-                <div id="login" class="form login">
+                <div id="login" class="form login" style="display:block">
                     <span class="title">Login</span>
                     <form action="login_action.php" method="POST">
-                        <div class="input-field">
+                        <div class="input-field" style="width:80%;">
                             <input type="text" placeholder="Username" id="username" name="username" required>
                             <i class="uil uil-user"></i>
                         </div>
-                        <div class="input-field">
+                        <div class="input-field" style="width:80%;">
                             <input type="password" placeholder="Enter Password" id="password" name="password" required>
                             <i class="uil uil-lock icon"></i>
                             <i class="uil uil-eye-slash showHidePw"></i>
