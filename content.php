@@ -9,57 +9,61 @@
         <meta name="viewport" content="width=device-width, initial-scale-1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Boxly | Inventory Management System</title>
+    
+        <!-- === CSS=== -->
         <link rel="stylesheet" type="text/css" href="style.css">
+
     </head>
     <body>
-        <header> </header>
-        <div id="login" class="login">
-            <?php
-                echo "Welcome ". $_SESSION['username'];
-            ?>
-            <br>
-            <a href="add_product.php">Add products</a>
+        <div >
+            <button class="open-button" onclick="openForm()">Add Product</button>
         </div>
+        <!-- Add product form div -->
+        <div id="add_product" class="form-popup">
+            <form action="add_product_action.php" method="POST" class="form-container">                    
+                <div>
+                    <select id="product_category" name="product_category">
+                        <option value="Beverages">Beverages</option>
+                        <option value="Bread/Bakery">Bread/Bakery</option>
+                        <option value="Canned/Jarred Goods">Canned/Jarred Goods</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Dry/Baking Goods">Dry/Baking Goods</option>
+                        <option value="Frozen Foods">Frozen Foods</option>
+                        <option value="Meat">Meat</option>
+                        <option value="Produce">Produce</option>
+                        <option value="Cleaners">Cleaners</option>
+                        <option value="Paper Goods">Paper Goods</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="text" placeholder="Product name" id="product_name" name="product_name" required>
+                </div>
 
-        <?php
-            include('connect_db.php');
+                <div>
+                    <input type='number' size='10' placeholder="Product quantity" id='product_quantity' name='product_quantity' required/>        
+                </div>
 
-            $deleted = 'false';
+                <div>
+                    <input type='number' placeholder="Product price (per piece)" id='product_price' name='product_price' required/>
+                </div>
 
-            $result = mysqli_query($conn,"SELECT product_category, product_id, product_name, product_quantity, product_price, total_value FROM product WHERE admin_id = '".$_SESSION['admin_id']."' AND deleted='".$deleted."' ");
-            $rows = mysqli_query($conn, $result);
-        ?>
+                <input type="submit" value="Submit">
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+        <script>
+            function openForm() {
+                document.getElementById("add_product").style.display = "block";
+            }
 
-        <table border="1" cellspacing="0" cellpadding="10">
-        <tr>
-            <th>S.N</th>
-            <th>Product Category</th>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Product Quantity</th>
-            <th>Product Price</th>
-            <th>Total Value</th>
-        </tr>
-        <?php
-            if (mysqli_num_rows($result) > 0) {
-            $sn=1;
-            while($data = mysqli_fetch_assoc($result)) {
-        ?>
-        <tr>
-            <td><?php echo $sn; ?> </td>
-            <td><?php echo $data['product_category']; ?> </td>
-            <td><?php echo $data['product_id']; ?> </td>
-            <td><?php echo $data['product_name']; ?> </td>
-            <td><?php echo $data['product_quantity']; ?> </td>
-            <td><?php echo $data['product_price']; ?> </td>
-            <td><?php echo $data['total_value']; ?> </td>
-        <tr>
-        <?php
-        $sn++;}} else { ?>
-            <tr>
-            <td colspan="8">No data found</td>
-            </tr>
-        <?php } ?>
-        </table
+            function closeForm() {
+                document.getElementById("add_product").style.display = "none";
+            }
+        </script>        
+        
+            <!--<a href="add_product.php">Add products</a>-->
+        </div>    
     </body>
 </html>

@@ -14,7 +14,7 @@
     <body>
         <div class="container">
             <div class="form">
-                <div id="login" class="form login" style="display:block">
+                <div id="login" class="form">
                     <span class="title">Register</span>
                     <form action="register_action.php" method="POST">
                         <div class="input-field">
