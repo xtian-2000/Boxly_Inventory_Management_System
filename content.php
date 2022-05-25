@@ -107,8 +107,8 @@
                                     <td>" . $row["product_quantity"] . "</td>
                                     <td>" . $row["product_price"] . "</td>
                                     <td>
-                                        <a class'btn btn-primary btn-sm' href='update'>Update</a>
-                                        <a class'btn btn-danger btn-sm' href='delete'>Delete</a>
+                                        <a class='btn btn-primary btn-sm' href='update'>Update</a>
+                                        <a class='btn btn-danger btn-sm' href='delete'>Delete</a>
                                     </td>
                                 </tr>";
                         } 
