@@ -12,9 +12,11 @@
     
         <!-- === CSS=== -->
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     </head>
-    <body>
+    <body style="background-image: none">
         <div >
             <button class="open-button" onclick="openForm()">Add Product</button>
         </div>
@@ -62,8 +64,58 @@
                 document.getElementById("add_product").style.display = "none";
             }
         </script>        
-        
-            <!--<a href="add_product.php">Add products</a>-->
-        </div>    
+        <div>
+            <h1>Products</h1>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Category</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price (per item)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $hostName = "ims.cm10enqi961k.us-east-2.rds.amazonaws.com";
+                        $userName = "pongodev";
+                        $password = "pongodevPongodev";
+                        $databaseName = "imsdatabase";
+
+                        // Create connection
+                        $conn = new mysqli($hostName, $userName, $password, $databaseName);
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+
+                        //SQL for reading the data from the db
+                        $sql = "SELECT product_category, product_id, product_name, product_quantity, product_price FROM product";
+                        $result = $conn->query($sql);
+
+                        if (!$result) {
+                            die("Invalid query: " . $conn->connect_error);
+                        }
+
+                        //Read data for each row
+                        while($row = $result->fetch_assoc()){
+                            echo "<tr>
+                                    <td>" . $row["product_category"] . "</td>
+                                    <td>" . $row["product_id"] . "</td>
+                                    <td>" . $row["product_name"] . "</td>
+                                    <td>" . $row["product_quantity"] . "</td>
+                                    <td>" . $row["product_price"] . "</td>
+                                    <td>
+                                        <a class'btn btn-primary btn-sm' href='update'>Update</a>
+                                        <a class'btn btn-danger btn-sm' href='delete'>Delete</a>
+                                    </td>
+                                </tr>";
+                        } 
+                    ?>
+                    
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
