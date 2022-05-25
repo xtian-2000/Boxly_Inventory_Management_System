@@ -33,6 +33,7 @@
         $stmt2->execute();
 
         echo "<script type='text/javascript'>alert('Added product successfully');</script>";
+        header("location: content.php");
         $stmt->close();
         $conn->close();
     }

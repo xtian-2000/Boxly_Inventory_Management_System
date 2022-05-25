@@ -14,16 +14,16 @@
     <!-- === CSS=== -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- CSS only -->
-    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
-<body style="margin: 50px;">
+<body>
+    <!-- Add product form div 
     <div>
         <button class="open-button" onclick="openForm()">Add Product</button>
     </div>
-    <!-- Add product form div -->
+    
     <div id="add_product" class="form-popup">
         <form action="add_product_action.php" method="POST" class="form-container">
             <div>
@@ -68,9 +68,10 @@
     function closeForm() {
         document.getElementById("add_product").style.display = "none";
     }
-    </script>
-    <div class="container">
+    </script>-->
+    <div class="container my-5">
         <h1>Products</h1>
+        <a class="btn btn-primary" href="add_product.php" role="button">New product</a>
         <br>
         <table class="table">
             <thead>
