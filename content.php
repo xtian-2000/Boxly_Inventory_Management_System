@@ -16,6 +16,8 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="table2excel.js"></script>
+    
 </head>
 
 <body>
@@ -72,8 +74,9 @@
     <div class="container my-5">
         <h1>Products</h1>
         <a class="btn btn-primary" href="add_product.php" role="button">New product</a>
+        <button class="btn btn-primary" id="export_button">Export</button>
         <br>
-        <table class="table">
+        <table id="product_data" class="table" >
             <thead>
                 <tr>
                     <th>Product Category</th>
@@ -114,8 +117,8 @@
                                     <td>" . $row["product_quantity"] . "</td>
                                     <td>" . $row["product_price"] . "</td>
                                     <td>
-                                        <a class='btn btn-primary btn-sm' href='update'>Update</a>
-                                        <a class='btn btn-danger btn-sm' href='delete'>Delete</a>
+                                        <a class='btn btn-primary btn-smhref='update'>Update</a>
+                                        <a class='btn btn-danger btn-sm href='delete'>Delete</a>
                                     </td>
                                 </tr>";
                         } 
@@ -125,5 +128,27 @@
         </table>
     </div>
 </body>
+<script>
 
+    // function html_table_to_excel(type)
+    //     {
+    //         var data = document.getElementById('product_data');
+    //         var file = XLSX.utils.table_to_book(data, {sheet: "sheet1"});
+    //         XLSX.write(file, { bookType: type, bookSST: true, type: 'base64' });
+    //         XLSX.writeFile(file, 'file.' + type);  
+    //     }
+    //     const export_button = document.getElementById('export_button');
+    //     export_button.addEventListener('click', () => {
+    //         html_table_to_excel('xlsx');
+    //     });
+
+    document.getElementById('export_button').addEventListener('click', function(){
+    var table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll("#product_data"));
+
+});
+    
+</script>
+    
+    
 </html>
