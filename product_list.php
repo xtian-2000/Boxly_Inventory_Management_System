@@ -78,7 +78,7 @@
                                         <td>$row[product_quantity]</td>
                                         <td>$row[product_price]</td>
                                         <td>
-                                            <a class='btn btn-success btn-sm' href='fulfill_order.php?id=$row[product_id]'>Fulfill</a>
+                                            <!-- <a class='btn btn-success btn-sm' href='fulfill_order.php?id=$row[product_id]'>Fulfill</a> -->
                                             <a class='btn btn-primary btn-sm' href='edit_product.php?id=$row[product_id]'>Edit</a>
                                             <a class='btn btn-danger btn-sm' href='delete_product.php?id=$row[product_id]'>Delete</a>
                                         </td>
