@@ -46,9 +46,12 @@
                         if ($conn->connect_error) {
                             die("Connection failed: " . $conn->connect_error);
                         }
+                         
+                        echo $_SESSION['username'];
+                        //echo $_SESSION['admin_id'];
 
                         //SQL for reading the data from the db
-                        $sql = "SELECT product_category, product_id, product_name, product_quantity, product_price FROM product";
+                        $sql = "SELECT * FROM product ";
                         $result = $conn->query($sql);
 
                         if (!$result) {
@@ -69,6 +72,12 @@
                                     </td>
                                 </tr>";
                         } 
+
+                        // remove all session variables
+                        session_unset();
+
+                        // destroy the session
+                        session_destroy();
                     ?>
 
             </tbody>

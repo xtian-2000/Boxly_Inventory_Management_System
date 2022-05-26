@@ -30,6 +30,8 @@
             echo "<script type='text/javascript'>alert('Register successfully');</script>";
             $stmt->close();
             $conn->close();
+            header("location: index.php");
+            exit;
         }
     }
 ?>
