@@ -21,6 +21,13 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark" style="height: 60px;margin-bottom: 60px">
+        <span class="navbar-brand mb-0 h1"></span>
+    </nav>
+    <?php
+            include "./side_nav.php";
+            echo createSideNav();
+    ?>
     <div class="container bg-light rounded my-5">
         <h1>Transactions</h1>
         <button class="btn btn-secondary" role="button" id="export_button">Export data</button>
