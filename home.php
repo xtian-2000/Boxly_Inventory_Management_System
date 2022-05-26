@@ -53,13 +53,10 @@
         <h2 style="color:white;">Welcome, <?php echo $_SESSION['username']; ?></h2>
 
     </header>
-    <div class="descriptioncontainer" style="left: 30%; margin: 20px; padding: 20px; width: 1000px">
+    <div class="descriptioncontainer" style="left: 31%; margin: 20px; padding: 20px; width: 1000px">
         <p class="text-sm-center" style="font-size: 25px;">Boxly Inventory Management System aids businesses in
-            determining
-            which goods to order
-            and when to order it.
-            It keeps track of merchandise from purchase to sale. The system monitors and adapts to trends to guarantee
-            that there is always enough stock to satisfy client orders and that shortages are detected early.</p>
+            storing and managing product information. The system can monitor inbound orders by having a transaction list
+            that is restricted from modification or deletion.</p>
     </div>
     <?php
         include "./side_nav.php";
