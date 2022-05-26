@@ -21,7 +21,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET') {
     // GET method: Show the data of the client
 
     if ( !isset($_GET["id"]) ) {
-        //echo "hh";
         header("location: product_list.php");
         exit;
     }
@@ -35,35 +34,34 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!$row) {
         header("location: product_list.php");
-        //exit;
+        exit;
     }
 
     //Store data from the database
     $product_category = $row['product_category'];
     $product_name = $row['product_name'];
     $product_quantity = $row['product_quantity'];
-    $product_price = $row['product_price'];
-    $total_value = $product_quantity * $product_price;
+    $product_price = $row['product_price']; 
 
 }
 else {
     // POST method: Update the data of the client
-
-    $product_id = $_POST["product_id"];
-    $product_category = $_POST['product_category'];
-    $product_name = $_POST['product_name'];
-    $product_quantity = $_POST['product_quantity'];
-    $product_price = $_POST['product_price'];
+    $order_quantity = $_POST["order_quantity"];
+    $total_value = (int)$order_quantity * (int)$product_price;
+    $new_product_quantity = (int)$product_quantity - (int)$order_quantity;
+  
 
     do {
-        if ( empty($product_category) || empty($product_name) || empty($product_quantity) || empty($product_price) ) {
+        if ( empty($order_quantity) ) {
             $errorMessage = "All the fields are required";
             break;
         }
+        //echo $order_quantity;
+        //echo $total_value;
+        //echo $product_quantity;
+        //echo $new_product_quantity;
 
-        $sql = "UPDATE product " .
-               "SET product_category = '$product_category', product_name = '$product_name', product_quantity = '$product_quantity', product_price = '$product_price', total_value = '$total_value' " .
-               "WHERE product_id = $product_id";
+        $sql = "UPDATE product SET product_quantity = '$new_product_quantity', total_value = '$total_value' WHERE product_id = $product_id";
 
         $result = $connection->query($sql);
 
@@ -94,7 +92,7 @@ else {
     </head>
     <body>
         <div class="container my-5">
-            <h2>Add product</h2>
+            <h2>Fulfill order</h2>
             <?php
             if ( !empty($errorMessage) ) {
                 echo "
@@ -108,40 +106,33 @@ else {
             <form method="POST">
                 <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
                 <div class="row mb-3">
-                    <label class="col-sm-3 col-form-label">Product Name</label>
+                    <label class="col-sm-3 col-form-label">Product Category</label>
                     <div class="col-sm-6">
-                        <select class="form-control" name="product_category" value="<?php echo $product_category; ?>">
-                            <option value="Beverages">Beverages</option>
-                            <option value="Bread/Bakery">Bread/Bakery</option>
-                            <option value="Canned/Jarred Goods">Canned/Jarred Goods</option>
-                            <option value="Dairy">Dairy</option>
-                            <option value="Dry/Baking Goods">Dry/Baking Goods</option>
-                            <option value="Frozen Foods">Frozen Foods</option>
-                            <option value="Meat">Meat</option>
-                            <option value="Produce">Produce</option>
-                            <option value="Cleaners">Cleaners</option>
-                            <option value="Paper Goods">Paper Goods</option>
-                            <option value="Personal Care">Personal Care</option>
-                            <option value="Others">Others</option>
-                        </select><br>
+                        <input disabled type="text" class="form-control" name="product_category" value="<?php echo $product_category; ?>">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">Product Name</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="product_name" value="<?php echo $product_name; ?>">
+                        <input disabled type="text" class="form-control" name="product_name" value="<?php echo $product_name; ?>">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">Quantity</label>
                     <div class="col-sm-6">
-                        <input type="number" class="form-control" name="product_quantity" value="<?php echo $product_quantity; ?>">
+                        <input disabled type="number" class="form-control" name="product_quantity" value="<?php echo $product_quantity; ?>">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">Price (per item)</label>
                     <div class="col-sm-6">
-                        <input type="number" class="form-control" name="product_price" value="<?php echo $product_price; ?>">
+                        <input disabled type="number" class="form-control" name="product_price" value="<?php echo $product_price; ?>">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label">Order Quantity</label>
+                    <div class="col-sm-6">
+                        <input type="number" class="form-control" name="order_quantity">
                     </div>
                 </div>
                 
@@ -165,7 +156,7 @@ else {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="col-sm-3 d-grid">
-                    <a class="btn btn-outline-primary" href="content.php" role="button">Cancel</a>
+                    <a class="btn btn-outline-primary" href="product_list.php" role="button">Cancel</a>
                 </div>
             </div>
 
