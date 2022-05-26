@@ -12,7 +12,7 @@
     <body>
         <div class="container my-5">
             <h2>Add product</h2>
-            <?php
+            
             <form action="add_product_action.php" method="POST">
                 <div class="row mb-3">
                     <label class="col-sm-3 col-form-label">Product Name</label>

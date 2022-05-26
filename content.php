@@ -16,12 +16,14 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
 </head>
 
 <body>
     <div class="container my-5">
         <h1>Products</h1>
         <a class="btn btn-primary" href="add_product.php" role="button">New product</a>
+        <button class="btn btn-primary" role="button">Export data</button>
         <br>
         <table class="table">
             <thead>
@@ -48,10 +50,10 @@
                         }
                          
                         echo $_SESSION['username'];
-                        //echo $_SESSION['admin_id'];
+                        echo $_SESSION['admin_id'];
 
                         //SQL for reading the data from the db
-                        $sql = "SELECT * FROM product ";
+                        $sql = "SELECT * FROM product WHERE admin_id = '". $_SESSION['admin_id'] ."' ";
                         $result = $conn->query($sql);
 
                         if (!$result) {
@@ -72,12 +74,6 @@
                                     </td>
                                 </tr>";
                         } 
-
-                        // remove all session variables
-                        session_unset();
-
-                        // destroy the session
-                        session_destroy();
                     ?>
 
             </tbody>

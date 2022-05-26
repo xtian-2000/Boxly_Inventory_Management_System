@@ -18,20 +18,12 @@
 
     if ($rows == 1) {
          
-        //SQL query for getting admin_id
-        //$result = mysqli_query($con,"SELECT admin_id FROM admin WHERE admin_username = '".$username."' AND admin_password='".$password."' ");
         
-        //$admin_id = $con->query($result);
-
-        $sql = "SELECT * FROM admin WHERE admin_username = '".$username."' AND admin_password='".$password."' ";
-        $admin_id = $con->query($sql);
-        while ($row = $admin_id->fetch_assoc()) {
-            echo $row['admin_id'];
+        // Get the admin_id
+        if ($row = $result->fetch_assoc()) {
+            $_SESSION['admin_id'] = $row['admin_id'];
         }
 
-        //Create session variables
-        
-        $_SESSION['admin_id'] = $admin_id;
         $_SESSION['username'] = $username;
 
         //Redirect webpage
