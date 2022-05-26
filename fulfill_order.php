@@ -42,28 +42,31 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET') {
     $product_name = $row['product_name'];
     $product_quantity = $row['product_quantity'];
     $product_price = $row['product_price']; 
+    echo $product_price;
 
 }
 else {
     // POST method: Update the data of the client
     $order_quantity = $_POST["order_quantity"];
-    $total_value = (int)$order_quantity * (int)$product_price;
-    $new_product_quantity = (int)$product_quantity - (int)$order_quantity;
-  
 
     do {
         if ( empty($order_quantity) ) {
             $errorMessage = "All the fields are required";
             break;
         }
-        //echo $order_quantity;
-        //echo $total_value;
-        //echo $product_quantity;
-        //echo $new_product_quantity;
+       
+        try {
+            $sql = "UPDATE product 
+            SET product_quantity = '(int)$product_quantity - (int)$order_quantity', 
+            total_value = '(int)$order_quantity * (int)$product_price' 
+            WHERE product_id = $product_id";
+            $result = mysqli_query($connection, $sql); 
+        } catch (mysqli_sql_exception $e) { 
+           var_dump($e);
+           exit; 
+        } 
 
-        $sql = "UPDATE product SET product_quantity = '$new_product_quantity', total_value = '$total_value' WHERE product_id = $product_id";
-
-        $result = $connection->query($sql);
+        //$result = $connection->query($sql);
 
         if (!$result) {
             $errorMessage = "Invalid query: " . $connection->error;
