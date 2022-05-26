@@ -27,7 +27,7 @@
         $_SESSION['username'] = $username;
 
         //Redirect webpage
-        header("Location: content.php");
+        header("Location: home.php");
         die();
     }
     else{
