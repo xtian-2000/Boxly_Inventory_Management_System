@@ -21,6 +21,16 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+.indexbody{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("bg_img.jpg");
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+}
+
 /* CSS for login and register form */
 
 .boxcontainer{

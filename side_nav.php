@@ -7,7 +7,7 @@
             <a href="home.php">Home</a>
             <a href="product_list.php">Product List</a>
             <a href="transaction_list.php">Transaction List</a>
-            <a href="#">Logout</a>
+            <a href="logout_action.php">Logout</a>
         </div>
 
 

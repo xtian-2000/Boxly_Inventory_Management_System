@@ -18,7 +18,7 @@
 
 </head>
 
-<body>
+<body class="indexbody">
     <div class="boxcontainer">
         <div class="form">
             <div id="login" class="form">
