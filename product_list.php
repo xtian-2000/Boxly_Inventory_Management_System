@@ -21,7 +21,18 @@
 </head>
 
 <body>
-    <div class="container bg-light rounded my-5">
+
+
+    <nav class="navbar navbar-dark bg-dark" style="height: 60px;margin-bottom: 60px">
+        <span class="navbar-brand mb-0 h1"></span>
+    </nav>
+    <?php
+            include "./side_nav.php";
+            echo createSideNav();
+    ?>
+
+
+    <div class="container bg-light rounded">
         <h1>Products</h1>
         <a class="btn btn-primary" href="add_product.php" role="button">New product</a>
         <button class="btn btn-secondary" role="button" id="export_button">Export data</button>
