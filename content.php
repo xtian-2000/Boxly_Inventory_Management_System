@@ -94,18 +94,6 @@
 </body>
 <script>
 
-    // function html_table_to_excel(type)
-    //     {
-    //         var data = document.getElementById('product_data');
-    //         var file = XLSX.utils.table_to_book(data, {sheet: "sheet1"});
-    //         XLSX.write(file, { bookType: type, bookSST: true, type: 'base64' });
-    //         XLSX.writeFile(file, 'file.' + type);  
-    //     }
-    //     const export_button = document.getElementById('export_button');
-    //     export_button.addEventListener('click', () => {
-    //         html_table_to_excel('xlsx');
-    //     });
-
     document.getElementById('export_button').addEventListener('click', function(){
     var table2excel = new Table2Excel();
     table2excel.export(document.querySelectorAll("#product_data"));
