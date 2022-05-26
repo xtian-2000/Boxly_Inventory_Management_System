@@ -57,7 +57,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="col-sm-3 d-grid">
-                    <a class="btn btn-outline-primary" href="content.php" role="button">Cancel</a>
+                    <a class="btn btn-outline-primary" href="product_list.php" role="button">Cancel</a>
                 </div>
             </div>
 

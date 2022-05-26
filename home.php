@@ -75,7 +75,8 @@
     <body>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="content.php">Product List</a>
+            <a href="product_list.php">Product List</a>
+            <a href="transaction_list.php">Transaction List</a>
         </div>
 
         

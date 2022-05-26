@@ -14,6 +14,6 @@ if ( isset($_GET["id"]) ) {
     $connection->query($sql);
 }
 
-header("location: content.php");
+header("location: product_list.php");
 exit;
 ?>

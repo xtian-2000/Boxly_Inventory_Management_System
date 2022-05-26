@@ -22,18 +22,20 @@
 
     <body>
         <div class="container my-5">
-            <h1>Products</h1>
-            <a class="btn btn-primary" href="add_product.php" role="button">New product</a>
+            <h1>Transactions</h1>
             <button class="btn btn-secondary" role="button" id="export_button">Export data</button>
             <br>
-            <table class="table" id="product_data">
+            <table class="table" id="transaction_data">
                 <thead>
                     <tr>
-                        <th>Product ID</th>
-                        <th>Product Category</th>
+                        <th>Transaction ID</th>
+                        <th>Transaction Category</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price (per item)</th>
+                        <th>Total value</th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th> </th>
                     </tr>
                 </thead>
@@ -51,7 +53,7 @@
                             }
 
                             //SQL for reading the data from the db
-                            $sql = "SELECT * FROM product WHERE admin_id = '". $_SESSION['admin_id'] ."' ";
+                            $sql = "SELECT * FROM transaction WHERE admin_id = '". $_SESSION['admin_id'] ."' ";
                             $result = $conn->query($sql);
 
                             if (!$result) {
@@ -61,15 +63,14 @@
                             //Read data for each row
                             while($row = $result->fetch_assoc()){
                                 echo "<tr>
-                                        <td>$row[product_id]</td>
-                                        <td>$row[product_category]</td>
+                                        <td>$row[transaction_id]</td>
+                                        <td>$row[transaction_category]</td>
                                         <td>$row[product_name]</td>
                                         <td>$row[product_quantity]</td>
                                         <td>$row[product_price]</td>
-                                        <td>
-                                            <a class='btn btn-primary btn-sm' href='edit_product.php?id=$row[product_id]'>Edit</a>
-                                            <a class='btn btn-danger btn-sm' href='delete.php?id=$row[product_id]'>Delete</a>
-                                        </td>
+                                        <td>$row[total_value]</td>
+                                        <td>$row[date_created]</td>
+                                        <td>$row[time_created]</td>
                                     </tr>";
                             } 
                         ?>
@@ -82,7 +83,7 @@
 
         document.getElementById('export_button').addEventListener('click', function(){
         var table2excel = new Table2Excel();
-        table2excel.export(document.querySelectorAll("#product_data"));
+        table2excel.export(document.querySelectorAll("#transaction_data"));
 
     });
         
