@@ -23,8 +23,18 @@
         font-family: "Lato", sans-serif;
         height: 100vh;
         display: flex;
-        align-items: none;
-        justify-content: none;
+        align-items: center;
+        justify-content: center;
+        background-image: url("bg_home.jpg");
+        background-size: cover;
+    }
+
+    .textbody {
+        font-family: "Lato", sans-serif;
+        height: 100vh;
+        display: grid;
+        align-items: center;
+        justify-content: center;
         background-image: url("bg_home.jpg");
         background-size: cover;
     }
@@ -42,8 +52,15 @@
     <header class="header">
         <h2 style="color:white;">Welcome, <?php echo $_SESSION['username']; ?></h2>
 
-
     </header>
+    <div class="descriptioncontainer" style="left: 30%; margin: 20px; padding: 20px; width: 1000px">
+        <p class="text-sm-center" style="font-size: 25px;">Boxly Inventory Management System aids businesses in
+            determining
+            which goods to order
+            and when to order it.
+            It keeps track of merchandise from purchase to sale. The system monitors and adapts to trends to guarantee
+            that there is always enough stock to satisfy client orders and that shortages are detected early.</p>
+    </div>
     <?php
         include "./side_nav.php";
         echo createSideNav();

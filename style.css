@@ -33,14 +33,25 @@ body{
 
 /* CSS for login and register form */
 
-.boxcontainer{
+
+.descriptioncontainer{
     position: relative;
-    max-width: 430px;
+    max-width: 800px;
     width: 100%;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+
+.boxcontainer{
+    position: relative;
+    max-width: 550px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 .boxcontainer .form{
     padding: 30px;
