@@ -22,7 +22,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if ( !isset($_GET["id"]) ) {
         //echo "hh";
-        header("location: content.php");
+        header("location: product_list.php");
         exit;
     }
 
@@ -34,9 +34,8 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET') {
     $row = $result->fetch_assoc();
 
     if (!$row) {
-        echo "Empty";
-        //header("location: content.php");
-        //exit;
+        header("location: product_list.php");
+        exit;
     }
 
     //Store data from the database
@@ -75,7 +74,7 @@ else {
 
         $successMessage = "Client updated correctly";
 
-        header("location: content.php");
+        header("location: product_list.php");
         exit;
 
     } while (false);
@@ -166,7 +165,7 @@ else {
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="col-sm-3 d-grid">
-                    <a class="btn btn-outline-primary" href="content.php" role="button">Cancel</a>
+                    <a class="btn btn-outline-primary" href="product_list.php" role="button">Cancel</a>
                 </div>
             </div>
 

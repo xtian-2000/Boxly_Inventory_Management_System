@@ -68,7 +68,7 @@
                                         <td>$row[product_price]</td>
                                         <td>
                                             <a class='btn btn-primary btn-sm' href='edit_product.php?id=$row[product_id]'>Edit</a>
-                                            <a class='btn btn-danger btn-sm' href='delete.php?id=$row[product_id]'>Delete</a>
+                                            <a class='btn btn-danger btn-sm' href='delete_product.php?id=$row[product_id]'>Delete</a>
                                         </td>
                                     </tr>";
                             } 
