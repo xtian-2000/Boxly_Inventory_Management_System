@@ -19,56 +19,6 @@
 </head>
 
 <body>
-    <!-- Add product form div 
-    <div>
-        <button class="open-button" onclick="openForm()">Add Product</button>
-    </div>
-    
-    <div id="add_product" class="form-popup">
-        <form action="add_product_action.php" method="POST" class="form-container">
-            <div>
-                <select id="product_category" name="product_category">
-                    <option value="Beverages">Beverages</option>
-                    <option value="Bread/Bakery">Bread/Bakery</option>
-                    <option value="Canned/Jarred Goods">Canned/Jarred Goods</option>
-                    <option value="Dairy">Dairy</option>
-                    <option value="Dry/Baking Goods">Dry/Baking Goods</option>
-                    <option value="Frozen Foods">Frozen Foods</option>
-                    <option value="Meat">Meat</option>
-                    <option value="Produce">Produce</option>
-                    <option value="Cleaners">Cleaners</option>
-                    <option value="Paper Goods">Paper Goods</option>
-                    <option value="Personal Care">Personal Care</option>
-                    <option value="Others">Others</option>
-                </select>
-            </div>
-            <div>
-                <input type="text" placeholder="Product name" id="product_name" name="product_name" required>
-            </div>
-
-            <div>
-                <input type='number' size='10' placeholder="Product quantity" id='product_quantity'
-                    name='product_quantity' required />
-            </div>
-
-            <div>
-                <input type='number' placeholder="Product price (per piece)" id='product_price' name='product_price'
-                    required />
-            </div>
-
-            <input type="submit" value="Submit" class="btn btn-secondary">
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-    <script>
-    function openForm() {
-        document.getElementById("add_product").style.display = "block";
-    }
-
-    function closeForm() {
-        document.getElementById("add_product").style.display = "none";
-    }
-    </script>-->
     <div class="container my-5">
         <h1>Products</h1>
         <a class="btn btn-primary" href="add_product.php" role="button">New product</a>
@@ -76,8 +26,8 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Product Category</th>
                     <th>Product ID</th>
+                    <th>Product Category</th>
                     <th>Product Name</th>
                     <th>Quantity</th>
                     <th>Price (per item)</th>
@@ -108,14 +58,14 @@
                         //Read data for each row
                         while($row = $result->fetch_assoc()){
                             echo "<tr>
-                                    <td>" . $row["product_category"] . "</td>
-                                    <td>" . $row["product_id"] . "</td>
-                                    <td>" . $row["product_name"] . "</td>
-                                    <td>" . $row["product_quantity"] . "</td>
-                                    <td>" . $row["product_price"] . "</td>
+                                    <td>$row[product_id]</td>
+                                    <td>$row[product_category]</td>
+                                    <td>$row[product_name]</td>
+                                    <td>$row[product_quantity]</td>
+                                    <td>$row[product_price]</td>
                                     <td>
-                                        <a class='btn btn-primary btn-sm' href='update'>Update</a>
-                                        <a class='btn btn-danger btn-sm' href='delete'>Delete</a>
+                                        <a class='btn btn-primary btn-sm' href='edit_product.php?id=$row[product_id]'>Edit</a>
+                                        <a class='btn btn-danger btn-sm' href='delete.php?id=$row[product_id]'>Delete</a>
                                     </td>
                                 </tr>";
                         } 
